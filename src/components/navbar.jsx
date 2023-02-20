@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ShoppingCart } from "phosphor-react";
 import "./navbar.css";
 
-export const Navbar = () => {
+export function Navbar() {
   return (
     <div className="navbar">
       <div className="links">
@@ -15,4 +15,4 @@ export const Navbar = () => {
       </div>
     </div>
   );
-};
+}

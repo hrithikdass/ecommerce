@@ -3,18 +3,18 @@ import { PRODUCTS } from "../products";
 
 export const ShopContext = createContext(null);
 
-const getDefaultCart = () => {
+function getDefaultCart() {
   let cart = {};
   for (let i = 1; i < PRODUCTS.length + 1; i++) {
     cart[i] = 0;
   }
   return cart;
-};
+}
 
-export const ShopContextProvider = (props) => {
+export function ShopContextProvider(props) {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
-  const getTotalCartAmount = () => {
+  function getTotalCartAmount() {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
@@ -23,23 +23,23 @@ export const ShopContextProvider = (props) => {
       }
     }
     return totalAmount;
-  };
+  }
 
-  const addToCart = (itemId) => {
+  function addToCart(itemId) {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-  };
+  }
 
-  const removeFromCart = (itemId) => {
+  function removeFromCart(itemId) {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-  };
+  }
 
-  const updateCartItemCount = (newAmount, itemId) => {
+  function updateCartItemCount(newAmount, itemId) {
     setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
-  };
+  }
 
-  const checkout = () => {
+  function checkout() {
     setCartItems(getDefaultCart());
-  };
+  }
 
   const contextValue = {
     cartItems,
@@ -55,4 +55,4 @@ export const ShopContextProvider = (props) => {
       {props.children}
     </ShopContext.Provider>
   );
-};
+}
