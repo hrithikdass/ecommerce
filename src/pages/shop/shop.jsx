@@ -1,14 +1,15 @@
 import React from "react";
 import { PRODUCTS } from "../../products";
-import Product from "./product";
+import { Product } from "./product";
 import "./shop.css";
 
-export default function Shop() {
+export const Shop = () => {
   return (
     <div className="shop">
       <div className="shopTitle">
-        <h1>FANNY</h1>
+        <h1>PedroTech Shop</h1>
       </div>
+
       <div className="products">
         {PRODUCTS.map((product) => (
           <Product data={product} />
@@ -16,4 +17,4 @@ export default function Shop() {
       </div>
     </div>
   );
-}
+};
